@@ -1,41 +1,40 @@
-let btnCreate = document.getElementById('btnCreate')
+let btncreate = document.getElementById('btncreate')
 
-btnCreate.addEventListener('click', () =>{
- let txtFname = document.getElementById("txtFname").value
- let txtLname = document.getElementById("txtLname").value
- let txtEmail = document.getElementById("txtEmail").value
- let txtPass = document.getElementById("txtPass").value
- let txtConPass = document.getElementById("txtConPass").value
+btncreate.addEventListener('click', () =>{
+ let txtfname = document.getElementById("txtfname").value
+ let txtlname = document.getElementById("txtlname").value
+ let txtemail = document.getElementById("txtemail").value
+ let txtpass = document.getElementById("txtpass").value
+ let txtconpass = document.getElementById("txtconpass").value
 
-  if(txtFname == "" || txtEmail == "" || txtPass == ""){
-          alert("Name and email be filled")
+  if(txtfname == "" || txtemail == "" || txtpass == ""){
+  	alert("Name and email be filled")
   }else{
-          if (txtConPass == txtPass) {
-                
-                  let emailID = txtEmail.replace(/\./g, "_dot_").replace(/@/g, "_at_")
-                  let status = "inactive"
-                  let timeNow = Date.now(); 
-                  let role = "Admin"
-                  firebase.auth().createUserWithEmailAndPassword(txtEmail,txtPass)
-                  .then((userCredential) =>{
-                          firebase.database().ref('userDetails/' + emailID).set({
-                                  FirstName:txtFname,
-                                  LastName:txtLname,
-                                  Email: txtEmail,
-                                  Status: status,
-                                  CreatedBy: txtEmail,
-                                  Role: role,
-                                  CreatedOn: timeNow
-                          })
-                          alert("Account Created ")
-                  })
-                  .catch((error) => {
-                          console.log(error)
-                          alert(error.message)
-                  })
-          }else{
-                  alert("Password do  not match")
-          }
+  	if (txtconpass == txtpass) {
+  		let emailid = txtemail.replace(/\./g, "_dot_").replace(/@/g, "_at_")
+  		let status = "inactive"
+  		let timenow = Date.now(); 
+  		let role = "Admin"
+  		firebase.auth().createUserWithEmailAndPassword(txtemail,txtpass)
+  		.then((userCredential) =>{
+  			firebase.database().ref('userDetails/' + emailid).set({
+  				FirstName:txtfname,
+  				LastName:txtlname,
+  				Email: txtemail,
+  				Status: status,
+  				CreatedBy: txtemail,
+  				Role: role,
+  				CreatedOn: timenow
+  			})
+  			alert("Account Created ")
+  		})
+  		.catch((error) => {
+  			console.log(error)
+  			alert(error.message)
+  		})
+  	}else{
+  		alert("Password do  not match")
+  	}
   }
 
-})
+}) 

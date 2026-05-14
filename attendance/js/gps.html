@@ -12,7 +12,7 @@
 <!-- TOP BAR -->
 <div class="topbar">
   <div class="logo">
-    <img src="assets/logo.png" alt="logo" width="20%">
+    <img src="assets/logo.jpeg" alt="logo" width="20%">
   </div>
   <div class="user">
     <label id="lbusername">username</label>
@@ -123,10 +123,10 @@
     menuToggle.textContent = nav.classList.contains('active') ? "✖" : "☰";
   });
 
-let lbUsername = document.getElementById('lbUsername')
+let lbusername = document.getElementById('lbusername')
 auth.onAuthStateChanged( function (user) {
   if (user) {
-    lbUsername.innerHTML= user.email
+    lbusername.innerHTML= user.email
   }else{
     window.location.href ="index.html"
   }
