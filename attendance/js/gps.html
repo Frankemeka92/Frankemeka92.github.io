@@ -123,10 +123,10 @@
     menuToggle.textContent = nav.classList.contains('active') ? "✖" : "☰";
   });
 
-let lbusername = document.getElementById('lbusername')
+let lbUsername = document.getElementById('lbUsername')
 auth.onAuthStateChanged( function (user) {
   if (user) {
-    lbusername.innerHTML= user.email
+    lbUsername.innerHTML= user.email
   }else{
     window.location.href ="index.html"
   }
