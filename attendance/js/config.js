@@ -20,5 +20,5 @@ function logout(){
     window.location = "index.html";
   }).catch((error) => {
     alert("error while trying to logout");
-  } 
+  })
 }

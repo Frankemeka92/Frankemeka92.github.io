@@ -1,31 +1,31 @@
 let btnCreate = document.getElementById('btnCreate')
 
 btnCreate.addEventListener('click', () =>{
- let txtfname = document.getElementById("txtfname").value
- let txtlname = document.getElementById("txtlname").value
- let txtemail = document.getElementById("txtemail").value
- let txtpass = document.getElementById("txtpass").value
- let txtconpass = document.getElementById("txtconpass").value
+ let txtFname = document.getElementById("txtFname").value
+ let txtLname = document.getElementById("txtLname").value
+ let txtEmail = document.getElementById("txtEmail").value
+ let txtPass = document.getElementById("txtPass").value
+ let txtConPass = document.getElementById("txtConPass").value
 
-  if(txtfname == "" || txtemail == "" || txtpass == ""){
+  if(txtFname == "" || txtEmail == "" || txtPass == ""){
           alert("Name and email be filled")
   }else{
-          if (txtconpass == txtpass) {
+          if (txtConPass == txtPass) {
                 
-                  let emailid = txtemail.replace(/\./g, "_dot_").replace(/@/g, "_at_")
+                  let emailID = txtEmail.replace(/\./g, "_dot_").replace(/@/g, "_at_")
                   let status = "inactive"
-                  let timenow = Date.now(); 
+                  let timeNow = Date.now(); 
                   let role = "Admin"
-                  firebase.auth().createUserWithEmailAndPassword(txtemail,txtpass)
+                  firebase.auth().createUserWithEmailAndPassword(txtEmail,txtPass)
                   .then((userCredential) =>{
-                          firebase.database().ref('userDetails/' + emailid).set({
-                                  FirstName:txtfname,
-                                  LastName:txtlname,
-                                  Email: txtemail,
+                          firebase.database().ref('userDetails/' + emailID).set({
+                                  FirstName:txtFname,
+                                  LastName:txtLname,
+                                  Email: txtEmail,
                                   Status: status,
-                                  CreatedBy: txtemail,
+                                  CreatedBy: txtEmail,
                                   Role: role,
-                                  CreatedOn: timenow
+                                  CreatedOn: timeNow
                           })
                           alert("Account Created ")
                   })

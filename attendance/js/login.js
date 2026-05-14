@@ -1,19 +1,19 @@
-let btnlogin = document.getElementById("btnlogin");
-btnlogin.addEventListener('click', () =>{
-    let txtusername = document.getElementById("txtusername").value
-    let txtpass = document.getElementById("txtpass").value
-    btnlogin.innerHTML = "Please wait..."
-    if(txtusername == "" || txtpass == ""){
+let btnLogin = document.getElementById("btnLogin");
+btnLogin.addEventListener('click', () =>{
+    let txtUsername = document.getElementById("txtUsername").value
+    let txtPass = document.getElementById("txtPass").value
+    btnLogin.innerHTML = "Please wait..."
+    if(txtUsername == "" || txtPass == ""){
         alert("Username and password must be filled")
-        btnlogin.innerHTML = "Log in"
+        btnLogin.innerHTML = "Log in"
     }else{
-        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSSION)
+        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
         .then(() => {
-            return firebase.auth().signInWithEmailAndPassword(txtusername, txtpass)
+            return firebase.auth().signInWithEmailAndPassword(txtUsername, txtPass)
     })
     .then((userCredential) => {
-        let emailid = txtusername.replace(/\./g, "_dot_").replace(/@/g, "_at_")
-        return firebase.database().ref('userDetails/' + emailid).once('value')
+        let emailID = txtUsername.replace(/\./g, "_dot_").replace(/@/g, "_at_")
+        return firebase.database().ref('userDetails/' + emailID).once('value')
     })
     .then((snapshot) => { 
         const userData = snapshot.val()
@@ -31,7 +31,8 @@ btnlogin.addEventListener('click', () =>{
 })
  .catch((error) => {
                 alert("wrong credentials")
-                btnlogin.innerHTML = "Log in"
+                btnLogin.innerHTML = "Log in"
     })
     })
+
 

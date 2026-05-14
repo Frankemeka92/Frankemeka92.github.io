@@ -1,14 +1,14 @@
-let btnreset =document.getElementById('btnreset')
-btnreset.addEventListener("click", () =>{
-    let txtemail = document.getElementById(txtemail).ariaValue
-    auth.sendPasswordResetEmail(txtemail)
+let btnReset =document.getElementById('btnReset')
+btnReset.addEventListener("click", () =>{
+    let txtEmail = document.getElementById(txtEmail).ariaValue
+    auth.sendPasswordResetEmail(txtEmail)
     .then(() =>{
         alert("reset link has been sent")
-        txtemail.value=""
+        txtEmail.value=""
     })
     .catch((error)=>{
       alert(error.messages)
       console.log(error)
-      txtemail.value =""
+      txtEmail.value =""
     })
 })
